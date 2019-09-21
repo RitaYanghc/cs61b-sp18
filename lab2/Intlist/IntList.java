@@ -81,17 +81,42 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList res = A;
+
+        while (A.rest != null) {
+            A = A.rest;
+        }
+        A.rest = B;
+        return res;
     }
+    public static void main(String args[]){
+        IntList A = IntList.of(1,2,3);
+        IntList B = IntList.of(4,5,6);
+        IntList res = A;
+
+        while (A.rest != null) {
+            A = IntList.of(2,3);
+        }
+        A.rest = B;
+        System.out.println(res);
+    }
+
 
     /**
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList ptr = new IntList(A.first,null);
+        IntList res = ptr;
+        while(A.rest!=null){
+            A=A.rest;
+            ptr.rest =new IntList(A.first,null);
+            ptr = ptr.rest;
+        }
+        ptr.rest = B;
+        return res;
+
     }
 
 
